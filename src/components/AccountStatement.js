@@ -28,24 +28,26 @@ export default function AccountStatement() {
           <p className="money minus">{expense}</p>
         </div>
       </div>
-      <div class="progress">
-        <div
-          class="progress-bar bg-success progress-bar-striped progress-bar-animated"
-          role="progressbar"
-          style={{ width: `${incomePercent}%` }}
-          aria-valuenow="30"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        ></div>
-        <div
-          class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
-          role="progressbar"
-          style={{ width: `${expensePercent}%` }}
-          aria-valuenow="20"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        ></div>
-      </div>
+      {totalAmount !== 0 && (
+        <div class="progress">
+          <div
+            class="progress-bar bg-success progress-bar-striped progress-bar-animated"
+            role="progressbar"
+            style={{ width: `${incomePercent}%` }}
+            aria-valuenow="30"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+          <div
+            class="progress-bar bg-danger progress-bar-striped progress-bar-animated"
+            role="progressbar"
+            style={{ width: `${expensePercent}%` }}
+            aria-valuenow="20"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
+      )}
     </div>
   );
 }
