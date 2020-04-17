@@ -15,9 +15,6 @@ export default function AccountStatement() {
   const totalAmount = Math.abs(income) + Math.abs(expense);
   let incomePercent = (100 * income) / totalAmount;
   let expensePercent = (100 * Math.abs(expense)) / totalAmount;
-  console.log(totalAmount);
-  // console.log(Math.abs(amount));
-  // console.log(Math.abs(amount));
 
   return (
     <div>

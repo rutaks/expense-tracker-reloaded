@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GlobalContext } from '../context/GlobalState';
 import ReactTimeAgo from 'react-time-ago';
 import en from 'javascript-time-ago/locale/en';
 import 'font-awesome/css/font-awesome.min.css';
 
 export default function TransactionItem({ transaction }) {
+  const { deleteTransactionById } = useContext(GlobalContext);
+
   return (
     <li className={transaction.amount > 0 ? 'plus' : 'minus'}>
       {transaction.description}
@@ -20,7 +23,10 @@ export default function TransactionItem({ transaction }) {
           </div>
         </div>
       </span>
-      <button className="delete-btn">
+      <button
+        className="delete-btn"
+        onClick={(e) => deleteTransactionById(transaction.id)}
+      >
         <i className="fa fa-remove"></i>
       </button>
     </li>
