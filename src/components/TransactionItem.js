@@ -1,19 +1,22 @@
 import React from 'react';
-import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import ReactTimeAgo from 'react-time-ago';
+import en from 'javascript-time-ago/locale/en';
 import 'font-awesome/css/font-awesome.min.css';
 
-export default function TransactionItem() {
+export default function TransactionItem({ transaction }) {
   return (
-    <li className="minus">
-      KFC
+    <li className={transaction.amount > 0 ? 'plus' : 'minus'}>
+      {transaction.description}
       <span>
         <div className="col-lg">
           <div class="row">
-            <b>1200 Rwf </b>
+            <b>{`${transaction.amount} ${transaction.currency}`} </b>
           </div>
 
           <div class="row">
-            <small>3 days ago</small>
+            <small>
+              <ReactTimeAgo date={transaction.date} />
+            </small>
           </div>
         </div>
       </span>
