@@ -1,4 +1,4 @@
-import transaction from './TransactionActions';
-export default ActionTypes = {
+import { TransactionTypes as transaction } from './TransactionActions';
+export const ActionTypes = {
   transaction,
 };

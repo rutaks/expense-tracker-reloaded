@@ -1,4 +1,4 @@
-import ActionTypes from '../actions/ActionTypes';
+import { ActionTypes } from '../actions/ActionTypes';
 
 export default (state, action) => {
   let { type, payload } = action;
