@@ -6,16 +6,19 @@ import Balance from './components/Balance';
 import AccountStatement from './components/AccountStatement';
 import TransactionHistory from './components/TransactionHistory';
 import AddTransactionForm from './components/AddTransactionForm';
+import { GlobalContext } from './context/GlobalState';
 
 function App() {
   return (
-    <div className="container">
-      <Header />
-      <Balance />
-      <AccountStatement />
-      <AddTransactionForm />
-      <TransactionHistory />
-    </div>
+    <GlobalContext>
+      <div className="container">
+        <Header />
+        <Balance />
+        <AccountStatement />
+        <AddTransactionForm />
+        <TransactionHistory />
+      </div>
+    </GlobalContext>
   );
 }
 
