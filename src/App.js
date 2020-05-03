@@ -1,5 +1,4 @@
-import React from 'react';
-import logo from './logo.png';
+import React, { useContext, Fragment } from 'react';
 import './App.css';
 import Header from './components/Header';
 import Balance from './components/Balance';
@@ -14,11 +13,13 @@ function App() {
     <GlobalProvider>
       <Navbar />
       <div className="container">
-        <Header />
-        <Balance />
-        <AccountStatement />
-        <AddTransactionForm />
-        <TransactionHistory />
+        <Fragment>
+          <Header />
+          <Balance />
+          <AccountStatement />
+          <AddTransactionForm />
+          <TransactionHistory />
+        </Fragment>
       </div>
     </GlobalProvider>
   );
