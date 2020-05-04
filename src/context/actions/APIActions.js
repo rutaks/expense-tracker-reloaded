@@ -10,10 +10,10 @@ export default class APIActions {
         payload: res.data.payload,
       });
     } catch (err) {
-      console.error(`AXIOS - on ${route}: `, err.response || err);
+      console.error(`AXIOS - on ${route}: `, err.response.data.message || err);
       dispatch({
         type: onFailure,
-        error: err.response,
+        error: err.response.data.message || err,
       });
     }
   }

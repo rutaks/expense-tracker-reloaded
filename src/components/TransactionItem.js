@@ -1,13 +1,12 @@
 import React, { useContext, Fragment, useState } from 'react';
-import { GlobalContext } from '../context/GlobalState';
+import { TransactionContext } from '../context/TransactionState';
 import ReactTimeAgo from 'react-time-ago';
 import FadeIn from 'react-fade-in';
 import 'font-awesome/css/font-awesome.min.css';
-import { Dialogs as dialog } from '../utils/Dialogs';
 import { CircleSpinner } from 'react-spinners-kit';
 
 export default function TransactionItem({ transaction }) {
-  const { deleteByTransactionId, isDeleting } = useContext(GlobalContext);
+  const { deleteByTransactionId, isDeleting } = useContext(TransactionContext);
   const [currentItem, setCurrentItem] = useState(false);
   let itemStatusStyle = transaction.amount > 0 ? 'plus' : 'minus';
 
@@ -37,14 +36,14 @@ export default function TransactionItem({ transaction }) {
                 </div>
                 <div class="row">
                   <small>
-                    <ReactTimeAgo date={transaction.date} />
+                    <ReactTimeAgo date={transaction.createdOn} />
                   </small>
                 </div>
               </div>
             </span>
             <button
               className="delete-btn"
-              onClick={() => deleteTransaction(transaction.id)}
+              onClick={() => deleteTransaction(transaction._id)}
             >
               <i className="fa fa-remove"></i>
             </button>

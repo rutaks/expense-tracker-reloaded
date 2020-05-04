@@ -1,13 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalState';
+import { TransactionContext } from '../context/TransactionState';
 import { Dialogs as dialog } from '../utils/Dialogs';
 import Button from './Button';
 export default function AddTransactionForm() {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState(0);
-  const { addTransaction, isAdding } = useContext(GlobalContext);
+  const { addTransaction, isAdding } = useContext(TransactionContext);
 
   function onSubmit(e) {
     e.preventDefault();
@@ -20,11 +20,9 @@ export default function AddTransactionForm() {
       return;
     }
     const newTransaction = {
-      id: Math.floor(Math.random() * 100000000),
       description,
       amount: +amount,
       currency: 'RWF',
-      date: new Date(),
     };
     addTransaction(newTransaction);
     clearFields();

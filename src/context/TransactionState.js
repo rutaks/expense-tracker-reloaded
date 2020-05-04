@@ -1,6 +1,5 @@
 import React, { createContext, useReducer } from 'react';
 import TransactionReducer from './reducers/TransactionReducer';
-import { ActionTypes } from './actions/ActionTypes';
 import TransactionAction from './actions/TransactionActions';
 
 const initialState = {
@@ -11,10 +10,9 @@ const initialState = {
   actionDone: false,
   error: null,
 };
+export const TransactionContext = createContext(initialState);
 
-export const GlobalContext = createContext(initialState);
-
-export function GlobalProvider({ children }) {
+export function TransactionProvider({ children }) {
   const [state, dispatch] = useReducer(TransactionReducer, initialState);
 
   async function getTransactions() {
@@ -27,14 +25,10 @@ export function GlobalProvider({ children }) {
 
   async function deleteByTransactionId(transactionId) {
     await TransactionAction.deleteTransactions(dispatch, transactionId);
-    // dispatch({
-    //   type: ActionTypes.transaction.DETETE_TRANSACTION,
-    //   payload: transactionId,
-    // });
   }
 
   return (
-    <GlobalContext.Provider
+    <TransactionContext.Provider
       value={{
         transactions: state.transactions,
         isFetching: state.isFetching,
@@ -47,6 +41,6 @@ export function GlobalProvider({ children }) {
       }}
     >
       {children}
-    </GlobalContext.Provider>
+    </TransactionContext.Provider>
   );
 }

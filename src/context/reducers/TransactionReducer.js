@@ -35,7 +35,7 @@ export default (state, action) => {
         ...state,
         isDeleting: false,
         transactions: state.transactions.filter(
-          (transaction) => transaction.id != payload
+          (transaction) => transaction._id !== payload
         ),
       };
     case ActionTypes.transaction.TRANSACTIONS_ERROR:

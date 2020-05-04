@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalState';
+import { TransactionContext } from '../context/TransactionState';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
-  let { transactions } = useContext(GlobalContext);
+  let { transactions } = useContext(TransactionContext);
   const amount = transactions.map((transaction) => transaction.amount);
   let income = amount
     .filter((item) => item > 1)
@@ -18,17 +19,26 @@ export default function Navbar() {
   return (
     <div>
       <nav
-        class={`navbar navbar-expand-lg navbar-dark ${
+        class={`navbar navbar-default navbar-dark ${
           incomePercent < expensePercent ? 'bg-danger' : 'bg-dark'
         }`}
       >
-        <a class="navbar-brand" href="#">
-          <img
-            src="../logo.png"
-            style={{ height: '30px', width: '30px' }}
-            alt="logo"
-          />
-        </a>
+        <div class="mx-auto order-0">
+          <a class="navbar-brand" href="#">
+            <img
+              src="../logo.png"
+              style={{ height: '50px', width: '50px' }}
+              alt="logo"
+            />
+          </a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <Link style={{ color: 'white' }} to="/logout">
+              Logout
+            </Link>
+          </li>
+        </ul>
       </nav>
     </div>
   );

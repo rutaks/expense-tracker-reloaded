@@ -1,4 +1,3 @@
-import axios from '../../utils/axios';
 import APIActions from './APIActions';
 import { ActionTypes } from './ActionTypes';
 
@@ -23,8 +22,6 @@ class TransactionAction {
     );
   }
   static async deleteTransactions(dispatch, transactionId) {
-    console.log(transactionId);
-
     await APIActions.delete(
       dispatch,
       `/api/v1/transactions/${transactionId}`,
