@@ -1,30 +1,16 @@
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalState';
+import { TransactionContext } from '../context/TransactionState';
 import { Dialogs as dialog } from '../utils/Dialogs';
-
+import Button from './Button';
 export default function AddTransactionForm() {
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState(0);
-  const { addTransaction } = useContext(GlobalContext);
+  const { addTransaction, isAdding } = useContext(TransactionContext);
 
   function onSubmit(e) {
     e.preventDefault();
-    validateFields();
-    const newTransaction = {
-      id: Math.floor(Math.random() * 100000000),
-      description,
-      amount: +amount,
-      currency: 'RWF',
-      date: new Date(),
-    };
-    addTransaction(newTransaction);
-    dialog.displaySuccessMessage('Transaction Added');
-    clearFields();
-  }
-
-  function validateFields() {
     if (description.length < 1) {
       dialog.displayErrorMessage('Enter A Transaction Description');
       return;
@@ -33,6 +19,13 @@ export default function AddTransactionForm() {
       dialog.displayErrorMessage('Enter A Valid Amount');
       return;
     }
+    const newTransaction = {
+      description,
+      amount: +amount,
+      currency: 'RWF',
+    };
+    addTransaction(newTransaction);
+    clearFields();
   }
 
   function clearFields() {
@@ -80,9 +73,7 @@ export default function AddTransactionForm() {
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-block btn-success">
-          Add Transaction
-        </button>
+        <Button placeholder="Add Transaction" isLoading={isAdding}></Button>
       </form>
     </div>
   );

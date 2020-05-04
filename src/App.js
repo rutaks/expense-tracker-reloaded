@@ -1,27 +1,24 @@
 import React from 'react';
-import logo from './logo.png';
+import { Route } from 'react-router-dom';
 import './App.css';
-import Header from './components/Header';
-import Balance from './components/Balance';
-import AccountStatement from './components/AccountStatement';
-import TransactionHistory from './components/TransactionHistory';
-import AddTransactionForm from './components/AddTransactionForm';
-import { GlobalProvider } from './context/GlobalState';
-import Navbar from './components/Navbar';
+import { TransactionProvider } from './context/TransactionState';
+import { AuthProvider } from './context/AuthState';
+import Dashboard from './components/Dashboard';
+import PrivateRoute from './components/PrivateRoute';
+import Login from './components/Login';
+import Register from './components/Register';
+import Logout from './components/Logout';
 
-function App() {
+const App = () => {
   return (
-    <GlobalProvider>
-      <Navbar />
-      <div className="container">
-        <Header />
-        <Balance />
-        <AccountStatement />
-        <AddTransactionForm />
-        <TransactionHistory />
-      </div>
-    </GlobalProvider>
+    <TransactionProvider>
+      <AuthProvider>
+        <PrivateRoute exact path="/" component={Dashboard} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/register" component={Register} />
+        <Route exact path="/logout" component={Logout} />
+      </AuthProvider>
+    </TransactionProvider>
   );
-}
-
+};
 export default App;

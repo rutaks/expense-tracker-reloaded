@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalState';
+import { TransactionContext } from '../context/TransactionState';
 
 export default function Balance() {
-  const { transactions } = useContext(GlobalContext);
+  const { transactions } = useContext(TransactionContext);
   const transactionAmountList = transactions.map(
     (transaction) => transaction.amount
   );

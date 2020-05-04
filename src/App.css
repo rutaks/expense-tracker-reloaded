@@ -10290,6 +10290,10 @@ h4 {
   color: #c0392b;
 }
 
+.money.pending {
+  color: #ffd900;
+}
+
 label {
   display: inline-block;
   margin: 10px 0;
@@ -10333,6 +10337,10 @@ input[type='number'] {
 
 .list li.minus {
   border-right: 5px solid #c0392b;
+}
+
+.list li.pending {
+  border-right: 5px solid #ffd900;
 }
 
 .delete-btn {

@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalState';
+import { TransactionContext } from '../context/TransactionState';
 
 export default function AccountStatement() {
-  let { transactions } = useContext(GlobalContext);
+  let { transactions } = useContext(TransactionContext);
   const amount = transactions.map((transaction) => transaction.amount);
   let income = amount
     .filter((item) => item > 1)
