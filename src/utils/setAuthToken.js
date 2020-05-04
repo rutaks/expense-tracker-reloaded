@@ -3,7 +3,6 @@ import axios from './axios';
 const setAuthToken = (token) => {
   if (token) {
     axios.defaults.headers.common['x-auth-token'] = `Bearer ${token}`;
-    console.log('TEST - ', axios.defaults.headers.common);
     localStorage.setItem('ifaranga-token', `Bearer ${token}`);
   } else {
     delete axios.defaults.headers.common['x-auth-token'];
