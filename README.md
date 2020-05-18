@@ -1,7 +1,10 @@
-# Expense Tracker (Reloaded)
+# Expense Tracker (Ifaranga)
 
 A React App, that keeps track of all your transactions, income or expense
 From [Traversy Media's](https://github.com/bradtraversy) repo with some slight modifications :)
+
+Live Version [here](https://ifaranga-frontend.herokuapp.com/)
+
 
 ## Installation
 
